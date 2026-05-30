@@ -1,6 +1,6 @@
 import Navbar from "../Components/Navbar";
 import Hero from "../Components/Hero";
-import NewsCard from "../components/NewsCard";
+import NewsCard from "../Components/NewsCard";
 import Footer from "../Components/Footer";
 import axios from "axios";
 import { useState } from "react";
