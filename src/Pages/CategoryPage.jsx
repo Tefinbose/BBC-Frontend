@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import NewsCard from "../components/NewsCard";
+import NewsCard from "../Components/NewsCard";
 
 function CategoryPage() {
   const { category } = useParams();
