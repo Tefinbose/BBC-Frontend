@@ -27,7 +27,7 @@ function CreateNews() {
     try {
 
       const res = await axios.post(
-        "http://localhost:5000/api/news",
+        `${import.meta.env.VITE_API_URL}/api/news`,
         formData
       );
 

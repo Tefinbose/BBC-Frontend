@@ -8,7 +8,7 @@ function Drafts() {
   useEffect(() => {
 
     axios
-      .get("http://localhost:5000/api/news/drafts")
+      .get(`${import.meta.env.VITE_API_URL}/api/news/drafts`)
       .then((res) => setDrafts(res.data))
       .catch((err) => console.log(err));
 

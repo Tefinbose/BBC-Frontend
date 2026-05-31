@@ -13,7 +13,7 @@ function Home() {
   // Fetching all news
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/news")
+      .get(`${import.meta.env.VITE_API_URL}/api/news`)
       .then((res) => {
         setNews(res.data);
       })

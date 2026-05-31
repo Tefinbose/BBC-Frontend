@@ -22,7 +22,7 @@ function EditNews() {
   useEffect(() => {
 
     axios
-      .get(`http://localhost:5000/api/news/${id}`)
+      .get(`${import.meta.env.VITE_API_URL}/api/news/${id}`)
       .then((res) => {
 
         setFormData(res.data);
@@ -50,7 +50,7 @@ function EditNews() {
     try {
 
       await axios.put(
-        `http://localhost:5000/api/news/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/news/${id}`,
         formData
       );
 

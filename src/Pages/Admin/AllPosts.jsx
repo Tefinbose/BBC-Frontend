@@ -10,7 +10,7 @@ function AllPosts() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/news")
+      .get(`${import.meta.env.VITE_API_URL}/api/news`)
       .then((res) => {
         setNews(res.data);
       })
@@ -22,7 +22,7 @@ function AllPosts() {
   //   Delete news api
   const deleteNews = async (id) => {
     try {
-      const result = await axios.delete(`http://localhost:5000/api/news/${id}`);
+      const result = await axios.delete(`${import.meta.env.VITE_API_URL}/api/news/${id}`);
       alert("News deleted");
       setNews(news.filter((item) => item._id !== id));
     } catch (err) {
