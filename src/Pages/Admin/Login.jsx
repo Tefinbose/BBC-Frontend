@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+
 
 function Login() {
   const [email, setEmail] = useState('')
@@ -18,6 +19,9 @@ function Login() {
         password:password
       }
     )
+    console.log(response);
+    
+    localStorage.setItem('admin',JSON.stringify(response.data.user));
 
     localStorage.setItem('token', response.data.token)
 
@@ -49,6 +53,18 @@ function Login() {
         <button className='bg-black text-white w-full py-3 rounded'>
           Login
         </button>
+
+        <p className="text-center">
+    Don't have an account?{" "}
+    
+    <Link
+      to="/admin/register"
+      className="text-blue-600 font-semibold"
+    >
+      Register
+    </Link>
+
+  </p>
       </form>
     </div>
   )

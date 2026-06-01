@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 
 function CreateNews() {
-
+  const [customCategory, setCustomCategory] =useState("");
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -13,23 +13,19 @@ function CreateNews() {
   });
 
   const handleChange = (e) => {
-
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
-
   };
 
   const handleSubmit = async (e) => {
-
     e.preventDefault();
 
     try {
-
       const res = await axios.post(
         `${import.meta.env.VITE_API_URL}/api/news`,
-        formData
+        formData,
       );
 
       alert("News Created Successfully");
@@ -44,24 +40,16 @@ function CreateNews() {
         category: "",
         status: "draft",
       });
-
     } catch (error) {
-
       console.log(error);
-
     }
   };
 
   return (
-
     <div className="w-full max-w-full overflow-x-hidden">
-
       <div className="bg-gray-100 min-h-screen p-4 md:p-8">
-
         {/* Heading */}
-        <h1 className="text-3xl md:text-5xl font-bold mb-8">
-          Create News
-        </h1>
+        <h1 className="text-3xl md:text-5xl font-bold mb-8">Create News</h1>
 
         {/* Form */}
         <form
@@ -79,7 +67,6 @@ function CreateNews() {
             max-w-3xl
           "
         >
-
           {/* Title */}
           <input
             type="text"
@@ -158,6 +145,8 @@ function CreateNews() {
           />
 
           {/* Category */}
+
+         
           <select
             name="category"
             value={formData.category}
@@ -170,27 +159,35 @@ function CreateNews() {
               text-base
               md:text-lg
               w-full
-              outline-none
-            "
-          >
+              outline-none">
 
-            <option value="">
-              Select Category
-            </option>
+            <option value="">Select Category</option>
 
-            <option value="sports">
-              Sports
-            </option>
+            <option value="sports">Sports</option>
 
-            <option value="technology">
-              Technology
-            </option>
+            <option value="technology">Technology</option>
 
-            <option value="business">
-              Business
-            </option>
+            <option value="business">Business</option>
+
+            <option value="custom">Custom Category</option>
 
           </select>
+
+           {formData.category === "custom" && (
+            <input
+              type="text"
+              placeholder="Enter Custom Category"
+              value={customCategory}
+              onChange={(e) => {
+                setCustomCategory(e.target.value);
+                setFormData({
+                  ...formData,
+                  category: e.target.value,
+                });
+              }}
+              className="p-4 bordertext-xl rounded "
+            />
+          )}
 
           {/* Status */}
           <select
@@ -208,15 +205,9 @@ function CreateNews() {
               outline-none
             "
           >
+            <option value="draft">Draft</option>
 
-            <option value="draft">
-              Draft
-            </option>
-
-            <option value="published">
-              Published
-            </option>
-
+            <option value="published">Published</option>
           </select>
 
           {/* Button */}
@@ -236,11 +227,8 @@ function CreateNews() {
           >
             Create News
           </button>
-
         </form>
-
       </div>
-
     </div>
   );
 }

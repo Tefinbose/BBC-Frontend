@@ -19,6 +19,7 @@ import EditNews from "./Pages/Admin/EditNews";
 import Profile from "./Pages/Admin/Profile";
 import ProtectedRoutes from "./Components/ProtectedRoutes";
 import Drafts from "./Pages/Admin/Drafts";
+import Register from "./Pages/Admin/Register";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path="/news/:id" element={<SingleNews />} />
         {/* Admin routes nested */}
         <Route path="/admin/login" element={<Login />} />
+        <Route path="/admin/register"element={<Register />}/>
         <Route path="/admin" element={
           <ProtectedRoutes>
             <AdminLayout />
@@ -39,7 +41,7 @@ function App() {
           <Route path="/admin/allposts" element={<AllPosts/>}/>
           <Route path="/admin/edit-news/:id" element={<EditNews/>}/>
           <Route path="/admin/drafts" element={<Drafts/>}/>
-           <Route path="profile" element={<Profile/>}/>
+          <Route path="profile" element={<Profile/>}/>
 
         </Route>
       </Routes>
