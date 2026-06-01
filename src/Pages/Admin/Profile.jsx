@@ -44,7 +44,7 @@ function Profile() {
 
     localStorage.removeItem("admin");
 
-    navigate("/admin/login");
+    navigate("/");
   };
 
   return (
